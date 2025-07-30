@@ -21,11 +21,11 @@ const Search = ({ onSearch }: { onSearch: (query: number) => void }) => {
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
-        gap: "10px",
+        gap: "2rem",
         margin: "2rem auto",
       }}
     >
-      <div>
+      <div style={{width: '40%'}}>
         <p>Last Link</p>
         {localStorage.getItem("lastGroup") && isClient ? (
           <p
@@ -37,22 +37,18 @@ const Search = ({ onSearch }: { onSearch: (query: number) => void }) => {
           </p>
         ) : null}
       </div>
-      <div>
+      <div style={{
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "flex-end",
+        gap: "1rem",
+      }}>
         <input
           type="number"
           placeholder="Search..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          style={{
-            padding: "4px",
-            fontSize: "1.2rem",
-            color: "#FFF",
-            outline: "none",
-            border: "none",
-            borderBottom: "1px solid #FFF",
-            marginRight: "1rem",
-            backgroundColor: "transparent",
-          }}
         />
         <button onClick={handleSearch}>Search</button>
       </div>

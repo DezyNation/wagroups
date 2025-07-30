@@ -69,3 +69,63 @@ a {
     outline: none;
     border: 2px solid #007bff;
 }
+
+button{
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+button:hover{
+    background-color: #0056b3;
+}
+
+button:active{
+    background-color: #004080;
+    transform: scale(0.98);
+}
+
+button:focus{
+    outline: none;
+    border: 2px solid #007bff;
+}
+
+button:active:focus{
+    outline: none;
+    border: 2px solid #007bff;
+}
+
+input{
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    color: #000;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+input:hover{
+    background-color: #e0e0e0;
+}
+
+input:active{
+    background-color: #d0d0d0;
+    transform: scale(0.98);
+}
+
+input:focus{
+    outline: none;
+    border: 2px solid #007bff;
+}
+
+input:active:focus{
+    outline: none;
+    border: 2px solid #007bff;
+}
