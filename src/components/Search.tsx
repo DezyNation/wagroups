@@ -34,7 +34,6 @@ const Search = ({ onSearch }: { onSearch: (query: number) => void }) => {
         alignItems: "center",
         justifyContent: "space-between",
         gap: "2rem",
-        margin: "2rem auto",
         position: "fixed",
         top: 0,
         left: 0,
