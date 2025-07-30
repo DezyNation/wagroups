@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 const Search = ({ onSearch }: { onSearch: (query: number) => void }) => {
   const [query, setQuery] = useState("");
+  const [history, setHistory] = useState("");
   const [isClient, setIsClient] = useState(false);
 
   const handleSearch = () => {
@@ -11,6 +12,16 @@ const Search = ({ onSearch }: { onSearch: (query: number) => void }) => {
   useEffect(() => {
     setIsClient(true);
   }, []);
+
+  useEffect(() => {
+    refreshHistory();
+  }, [isClient]);
+
+  function refreshHistory() {
+    if (isClient) {
+      setHistory(localStorage.getItem("lastGroup") || "");
+    }
+  }
 
   if (!isClient) return <></>;
 
@@ -23,21 +34,17 @@ const Search = ({ onSearch }: { onSearch: (query: number) => void }) => {
         justifyContent: "space-between",
         gap: "2rem",
         margin: "2rem auto",
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 1000,
       }}
     >
-      <div
-        style={{ width: "max-content", position: "fixed", bottom: 0, left: 0 }}
-      >
+      <div onClick={refreshHistory}>
         <p>Last Link</p>
-        {localStorage.getItem("lastGroup") && isClient ? (
-          <p
-            style={{ color: "blue" }}
-            // @ts-ignore
-            onClick={() => setQuery(localStorage.getItem("lastGroup"))}
-          >
-            Group {localStorage.getItem("lastGroup")}
-          </p>
-        ) : null}
+
+        <p style={{ color: "blue" }}>Group {history}</p>
       </div>
       <div
         style={{

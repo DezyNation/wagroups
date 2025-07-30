@@ -34,7 +34,7 @@ export default function Home() {
     <div style={{ padding: "1rem" }}>
       <Search onSearch={(q) => handleSearch(q)} />
       <main>
-        <div className="grid">
+        <div className="grid" style={{marginTop: '4rem'}}>
           {results?.map((item, key) => {
             if (isClient)
               return (
