@@ -1,11 +1,16 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 const Search = ({ onSearch }: { onSearch: (query: number) => void }) => {
   const [query, setQuery] = useState("");
+  const [isClient, setIsClient] = useState(false);
 
   const handleSearch = () => {
     onSearch(parseInt(query));
   };
+  
+  useEffect(() =>{
+    setIsClient(true);
+  },[])
 
   return (
     <div
@@ -20,7 +25,7 @@ const Search = ({ onSearch }: { onSearch: (query: number) => void }) => {
     >
       <div>
         <p>Last Link</p>
-        {localStorage.getItem("lastGroup") ? (
+        {localStorage.getItem("lastGroup") && isClient ? (
           <p
             style={{ color: "blue" }}
             // @ts-ignore

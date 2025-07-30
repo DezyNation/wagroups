@@ -4,6 +4,7 @@ import { groupsArray } from "@/lib/data";
 import Search from "@/components/Search";
 
 export default function Home() {
+  const [isClient, setIsClient] = useState(false);
   const [results, setResults] = useState([]);
 
   const handleSearch = (query: number) => {
@@ -22,6 +23,7 @@ export default function Home() {
   };
 
   useEffect(() => {
+    setIsClient(true);
     // @ts-ignore
     if (groupsArray.length) setResults(groupsArray);
   }, [groupsArray]);
@@ -31,22 +33,25 @@ export default function Home() {
       <Search onSearch={(q) => handleSearch(q)} />
       <main>
         <div className="grid">
-          {results?.map((item, key) => (
-            <p
-              key={key}
-              className="grid-item"
-              onClick={() => {
-                // Open link in new tab
-                localStorage.setItem(
-                  "lastGroup",
-                  `${groupsArray.indexOf(item) + 1}`,
-                );
-                window.open(item, "_blank");
-              }}
-            >
-              Group {groupsArray.indexOf(item) + 1}
-            </p>
-          ))}
+          {results?.map((item, key) => {
+            if (isClient)
+              return (
+                <p
+                  key={key}
+                  className="grid-item"
+                  onClick={() => {
+                    // Open link in new tab
+                    localStorage.setItem(
+                      "lastGroup",
+                      `${groupsArray.indexOf(item) + 1}`,
+                    );
+                    window.open(item, "_blank");
+                  }}
+                >
+                  Group {groupsArray.indexOf(item) + 1}
+                </p>
+              );
+          })}
         </div>
       </main>
     </div>
