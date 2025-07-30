@@ -19,20 +19,32 @@ const Search = ({ onSearch }: { onSearch: (query: number) => void }) => {
       }}
     >
       <div>
+        <p>Last Link</p>
+        {localStorage.getItem("lastGroup") ? (
+          <p
+            style={{ color: "blue" }}
+            // @ts-ignore
+            onClick={() => setQuery(localStorage.getItem("lastGroup"))}
+          >
+            Group {localStorage.getItem("lastGroup")}
+          </p>
+        ) : null}
+      </div>
+      <div>
         <input
           type="number"
           placeholder="Search..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           style={{
-            padding: '4px',
-            fontSize: '1.2rem',
-            color: '#FFF',
-            outline: 'none',
-            border: 'none',
-            borderBottom: '1px solid #FFF',
-            marginRight: '1rem',
-            backgroundColor: 'transparent'
+            padding: "4px",
+            fontSize: "1.2rem",
+            color: "#FFF",
+            outline: "none",
+            border: "none",
+            borderBottom: "1px solid #FFF",
+            marginRight: "1rem",
+            backgroundColor: "transparent",
           }}
         />
         <button onClick={handleSearch}>Search</button>

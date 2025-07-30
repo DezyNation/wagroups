@@ -32,9 +32,20 @@ export default function Home() {
       <main>
         <div className="grid">
           {results?.map((item, key) => (
-            <a href={item} key={key} target="_blank" className="grid-item">
+            <p
+              key={key}
+              className="grid-item"
+              onClick={() => {
+                // Open link in new tab
+                localStorage.setItem(
+                  "lastGroup",
+                  `${groupsArray.indexOf(item) + 1}`,
+                );
+                window.open(item, "_blank");
+              }}
+            >
               Group {groupsArray.indexOf(item) + 1}
-            </a>
+            </p>
           ))}
         </div>
       </main>
