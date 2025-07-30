@@ -7,10 +7,12 @@ const Search = ({ onSearch }: { onSearch: (query: number) => void }) => {
   const handleSearch = () => {
     onSearch(parseInt(query));
   };
-  
-  useEffect(() =>{
+
+  useEffect(() => {
     setIsClient(true);
-  },[])
+  }, []);
+
+  if (!isClient) return <></>;
 
   return (
     <div

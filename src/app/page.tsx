@@ -28,6 +28,8 @@ export default function Home() {
     if (groupsArray.length) setResults(groupsArray);
   }, [groupsArray]);
 
+  if (!isClient) return <></>;
+
   return (
     <div style={{ padding: "1rem" }}>
       <Search onSearch={(q) => handleSearch(q)} />
